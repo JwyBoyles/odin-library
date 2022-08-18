@@ -1,3 +1,5 @@
+let myLibrary = [];
+
 const bookOne = {
     name: "Game of Thrones",
     author: "George RR Martin",
@@ -25,3 +27,9 @@ function book(name, author, pageCount, haveRead) {
     this.pageCount = pageCount
     this.haveRead = haveRead
 }
+
+myLibrary.push(bookOne);
+myLibrary.push(bookTwo);
+myLibrary.push(bookThree);
+
+console.log(myLibrary);

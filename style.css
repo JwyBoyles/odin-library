@@ -1,3 +1,8 @@
-.cardGroup {
-    border: 2px solid red;
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+td {
+    border: 2px solid black;
 }

@@ -4,6 +4,7 @@ let addBook = document.querySelector('#addBook')
 let newBookSection = document.querySelector('#newBookSection')
 let createBook = document.querySelector('#createBook');
 
+
 let form = document.querySelector('form');
 form.classList.toggle('hidden');
 
@@ -38,7 +39,6 @@ myLibrary.push(bookOne,bookTwo,bookThree);
 function createTable() {
 for (let i = 0; i < myLibrary.length; ++i) {
     const row = document.createElement('tr');
-
     let titleCell = document.createElement('td');
     titleCell.textContent = myLibrary[i].title;
 
@@ -51,10 +51,19 @@ for (let i = 0; i < myLibrary.length; ++i) {
     let readCell = document.createElement('td');
     readCell.textContent = myLibrary[i].read;
 
+    let deleteButton = document.createElement('button')
+    deleteButton.textContent = "Remove Entry";
+    let deleteCell = document.createElement('td');
+    deleteButton.addEventListener('click', () => {
+      row.remove();
+      });
+    deleteCell.appendChild(deleteButton);
+
     row.appendChild(titleCell);
     row.appendChild(authorCell);
     row.appendChild(pagesCell);
     row.appendChild(readCell);
+    row.appendChild(deleteButton);
 
     table.appendChild(row);
 }
@@ -68,7 +77,6 @@ function addBookToTable() {
     let newPages = document.querySelector('#newPages');
     let newRead = document.querySelector('#newRead');
     let newBook = new Book(newTitle.value, newAuthor.value, newPages.value, newRead.value);
-    console.log(newBook);
     myLibrary.push(newBook);
     const row = document.createElement('tr');
     let titleCell = document.createElement('td');
@@ -82,12 +90,22 @@ function addBookToTable() {
 
     let readCell = document.createElement('td');
     readCell.textContent = newBook.read;
+
+    let deleteButton = document.createElement('button')
+    deleteButton.textContent = "Remove Entry";
+    let deleteCell = document.createElement('td');
+    deleteButton.addEventListener('click', () => {
+      row.remove();
+      });
+    deleteCell.appendChild(deleteButton);
     
     row.appendChild(titleCell);
     row.appendChild(authorCell);
     row.appendChild(pagesCell);
     row.appendChild(readCell);
+    row.appendChild(deleteCell);
 
     table.appendChild(row);
 
 }
+

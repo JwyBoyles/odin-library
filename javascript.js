@@ -14,6 +14,7 @@ addBook.addEventListener('click', () => {
 
 createBook.addEventListener('click', () => {
  addBookToTable();
+ form.classList.toggle('hidden');
  });
 
 form.addEventListener('submit', callbackFunction);
@@ -36,6 +37,37 @@ let bookThree = new Book("The Waves", "Virginia Wolfe", "300", "No")
 
 myLibrary.push(bookOne,bookTwo,bookThree);
 
+function changeStatus() {
+  switch (bookOne.read){
+    case "Yes":
+      bookOne.read = "No";
+      break
+    case "No": 
+      bookOne.read = "Yes";
+      break
+    }
+
+  switch (bookTwo.read){
+      case "Yes":
+        bookTwo.read = "No";
+        break
+      case "No": 
+      bookTwo.read = "Yes";
+        break
+      }
+  
+    switch (bookTwo.read){
+      case "Yes":
+        bookThree.read = "No";
+        break
+      case "No": 
+        bookThree.read = "Yes";
+        break
+        }
+    
+}
+
+
 function createTable() {
 for (let i = 0; i < myLibrary.length; ++i) {
     const row = document.createElement('tr');
@@ -48,8 +80,22 @@ for (let i = 0; i < myLibrary.length; ++i) {
     let pagesCell = document.createElement('td');
     pagesCell.textContent = myLibrary[i].pages;
 
+    const readButton = document.createElement('button')
+    readButton.textContent = myLibrary[i].read;
     let readCell = document.createElement('td');
-    readCell.textContent = myLibrary[i].read;
+    readCell.appendChild(readButton);
+
+    readButton.addEventListener('click', () => {
+      changeStatus();
+      switch (readButton.textContent){
+      case "Yes":
+        readButton.textContent = "No";
+        break
+      case "No": 
+        readButton.textContent = "Yes";
+        break
+      }
+    });
 
     let deleteButton = document.createElement('button')
     deleteButton.textContent = "Remove Entry";
@@ -71,6 +117,7 @@ for (let i = 0; i < myLibrary.length; ++i) {
 
 createTable()
 
+
 function addBookToTable() {
     let newTitle = document.querySelector('#newTitle');
     let newAuthor = document.querySelector('#newAuthor');
@@ -88,8 +135,28 @@ function addBookToTable() {
     let pagesCell = document.createElement('td');
     pagesCell.textContent = newBook.pages;
 
+    const readButton = document.createElement('button')
+    readButton.textContent = newBook.read;
     let readCell = document.createElement('td');
-    readCell.textContent = newBook.read;
+    readCell.appendChild(readButton);
+
+    readButton.addEventListener('click', () => {
+      switch (newBook.read) {
+        case "Yes": 
+        newBook.read = "No";
+        break
+        case "No": 
+        newBook.read = "Yes"
+      }
+      switch (readButton.textContent){
+      case "Yes":
+        readButton.textContent = "No";
+        break
+      case "No": 
+        readButton.textContent = "Yes";
+        break
+      }
+    });
 
     let deleteButton = document.createElement('button')
     deleteButton.textContent = "Remove Entry";
@@ -108,4 +175,5 @@ function addBookToTable() {
     table.appendChild(row);
 
 }
+
 

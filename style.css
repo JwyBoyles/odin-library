@@ -6,3 +6,16 @@ table {
 td {
     border: 2px solid black;
 }
+
+.hidden {
+    display: none;
+}
+
+#newBookSection {
+    width: 20vh;
+}
+
+input {
+    width: 25vh;
+}
+

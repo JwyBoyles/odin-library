@@ -21,8 +21,19 @@
             </thead>
         </table>
     </div>
-    <div class="newBooks">
-    <button id="newBook">Add New Book</button>
+    <div id="newBookSection">
+        <form>
+            <label for="title">Title:</label><br>
+            <input type="text" id="newTitle" name="newTitle"><br>
+            <label for="author">Author:</label><br>
+            <input type="text" id="newAuthor" name="newAuthor">
+            <label for="pages">Page Count:</label><br>
+            <input type="text" id="newPages" name="newPages"><br>
+            <label for="read">Have I Read this?:</label><br>
+            <input type="text" id="newRead" name="newRead">
+            <button id="createBook" type="submit">Create Book</button>
+        </form>
+    <button id="addBook">Add Book</button>
     </div>
 </body>
 </html>
